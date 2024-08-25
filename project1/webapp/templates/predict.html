@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forest Fire Data Input Form</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            color: #333;
+        }
+        h1 {
+            color: #2e8b57;
+            text-align: center;
+            margin: 20px 0;
+            font-size: 2em;
+        }
+        form {
+            background-color: #fff;
+            padding: 30px;
+            margin: 20px auto;
+            max-width: 600px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+            transition: box-shadow 0.3s ease-in-out;
+        }
+        form:hover {
+            box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.3);
+        }
+        label {
+            display: block;
+            margin: 15px 0 5px;
+            font-weight: bold;
+            color: #555;
+            font-size: 1.1em;
+        }
+        input[type="text"], select {
+            width: calc(100% - 16px);
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            box-sizing: border-box;
+            font-size: 1em;
+            transition: border-color 0.3s ease-in-out;
+        }
+        input[type="text"]:focus, select:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease-in-out;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+        h2 {
+            color: #2e8b57;
+            font-weight: bold;
+            text-align: center;
+            background-color: #e7f3e7;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 30px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body>
+    <h1>Forest Fire Data Input Form</h1>
+    <form action="{{url_for('predict')}}" method="POST">
+        <label for="temperature">Temperature:</label>
+        <input type="text" id="temperature" name="Temperature" required>
+
+        <label for="rh">Relative Humidity (RH):</label>
+        <input type="text" id="rh" name="RH" required>
+
+        <label for="ws">Wind Speed (Ws):</label>
+        <input type="text" id="ws" name="Ws" required>
+
+        <label for="rain">Rain:</label>
+        <input type="text" id="rain" name="Rain" required>
+
+        <label for="ffmc">FFMC (Fine Fuel Moisture Code):</label>
+        <input type="text" id="ffmc" name="FFMC" required>
+
+        <label for="dmc">DMC (Duff Moisture Code):</label>
+        <input type="text" id="dmc" name="DMC" required>
+
+        <label for="isi">ISI (Initial Spread Index):</label>
+        <input type="text" id="isi" name="ISI" required>
+
+        <label for="classes">Classes:</label>
+        <input type="text" id="classes" name="Classes" required>
+
+        <label for="region">Region:</label>
+        <select id="region" name="region" required>
+            <option value=0>0</option>
+            <option value=1>1</option>
+        </select>
+
+        <input type="submit" value="Submit">
+    </form>
+    <h2>
+        The FWI PREDICTION IS: {{results}}
+    </h2>
+</body>
+</html>
